@@ -69,7 +69,7 @@ export default {
 
       let re = /symbol/gi;
 
-      let lines = this.spriteItems.split("<svg>");
+      let lines = this.spriteItems.split("<svg");
       lines = lines[1].split("</svg>");
       lines = lines[0].split("<symbol");
       lines.splice(0, 1);
