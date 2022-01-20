@@ -1,0 +1,152 @@
+
+  * {
+    box-sizing: border-box;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+  }
+
+  body {
+    margin: 0;
+    font-size: 16px;
+    font-family: Roboto, Arial, sans-serif;
+  }
+
+  button,
+  textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: inherit;
+    box-shadow: none;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .export-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+
+    &__workspace {
+      max-width: 50%;
+      width: 100%;
+    }
+
+    &__result {
+      margin-top: 50px;
+    }
+  }
+
+  .export-icons-workspace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__textarea {
+      resize: none;
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #00375e;
+      border-radius: 4px;
+      transition: border-color 0.2s ease-in-out;
+
+      &:focus {
+        outline: none;
+        border-color: lighten(#00375e, 15%);
+      }
+    }
+
+    &__button {
+      margin-top: 25px;
+    }
+  }
+
+  .button {
+    max-width: 100%;
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border-radius: 40px;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+
+    &__container {
+      flex: auto 0 1;
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    &__label {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #ffffff;
+    }
+
+    &--theme-primary {
+      background-color: #276aa5;
+
+      &:hover {
+        background-color: #1f5584;
+      }
+    }
+
+    &--theme-secondary {
+      background-color: #25a248;
+
+      &:hover {
+        background-color: #229643;
+      }
+    }
+  }
+
+  .export-icons-table {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    border: 1px solid #00375e;
+    border-radius: 4px;
+
+    &__row {
+      display: grid;
+      grid-template-columns: 150px 1fr auto;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #00375e;
+      }
+    }
+
+    &__cell {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+
+      &:not(:last-child) {
+        border-right: 1px solid #00375e;
+      }
+    }
+  }
+
