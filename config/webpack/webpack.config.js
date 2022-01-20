@@ -14,8 +14,7 @@ let settings = {
     entry: `${paths.src}/index.ts`,
     output: {
         filename:   'js/[name].[contenthash].js',
-        path: paths.build,
-        publicPath: ''
+        path: paths.build
     },
     watch: (WATCH === true || SERVE === true),
     watchOptions: {
