@@ -21,6 +21,7 @@
     "markdown-loader": "^6.0.0",
     "mini-css-extract-plugin": "^2.5.2",
     "postcss-scss": "^4.0.3",
+    "resolve-url-loader": "^5.0.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",

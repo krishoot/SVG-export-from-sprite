@@ -1,9 +1,11 @@
 const paths = require('../paths')
+const pathtoresolve = require('path');
 
 const webpack = require('webpack')
 
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackBar = require('webpackbar');
 
 const babelLoader = {
@@ -36,10 +38,6 @@ module.exports = {
     },
     extensions: ['.js', '.ts', '.vue', '.json']
   },
-  experiments: {
-    topLevelAwait: true,
-    outputModule: true
-  },
   module: {
     rules: [
       // JavaScript
@@ -70,15 +68,24 @@ module.exports = {
       },
       // CSS, SASS
       {
-        test: /\.(c|sa|sc)ss$/i,
+        test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
+          // minify all css output
+          MiniCssExtractPlugin.loader,
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Path fix resolver for scss
+          "resolve-url-loader",
+          // Compiles Sass to CSS
           {
-            loader: 'css-loader',
-            options: { importLoaders: 1 }
-          },
-          'sass-loader'
-        ]
+            loader: "sass-loader",
+            options: {
+              // Prefer `dart-sass`
+              implementation: require("sass"),
+            },
+          }
+        ],
       },
       // MD
       {

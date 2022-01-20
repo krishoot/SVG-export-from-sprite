@@ -221,8 +221,7 @@ export default {
     padding: 15px 30px;
     border-radius: 40px;
     text-align: center;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
-    border-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
 
     &__container {
       flex: auto 0 1;

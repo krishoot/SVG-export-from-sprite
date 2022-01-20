@@ -22,12 +22,21 @@ module.exports = merge(common, {
       {
         test: /\.(c|sa|sc)ss$/i,
         use: [
+          'style-loader',
+          // minify all css output
           MiniCssExtractPlugin.loader,
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Path fix resolver for scss
+          "resolve-url-loader",
+          // Compiles Sass to CSS
           {
-            loader: 'css-loader',
-            options: { importLoaders: 1 }
-          },
-          'sass-loader'
+            loader: "sass-loader",
+            options: {
+              // Prefer `dart-sass`
+              implementation: require("sass"),
+            },
+          }
         ]
       }
     ]
