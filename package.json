@@ -23,6 +23,7 @@
     "html-webpack-plugin": "^5.5.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "mini-css-extract-plugin": "^2.5.2",
+    "postcss": "8.4.5",
     "postcss-scss": "^4.0.3",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.49.0",
@@ -51,5 +52,8 @@
     "dev-watch": "cross-env NODE_ENV=development && WATCH=true && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js",
     "dev-server": "cross-env DEV_SERVER=true && node ./config/webpack/dev.server.js",
     "prod": "cross-env NODE_ENV=production && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js"
+  },
+  "dependencies": {
+    "nth-check": "2.0.1"
   }
 }
