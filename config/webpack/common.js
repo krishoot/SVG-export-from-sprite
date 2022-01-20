@@ -103,6 +103,9 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new WebpackBar(),
     new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      experimentalUseImportModule: true,
+    }),
 
     new CopyWebpackPlugin({
       patterns: [
