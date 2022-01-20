@@ -50,6 +50,9 @@
 </template>
 
 <script>
+// TODO: Удалять старые иконки при загрузке нового спрайта
+// TODO: svg должна быть вообще любой, даже с xmls в начале
+// TODO: версионирование
 export default {
   data: () => ({
     spriteItems: "",
