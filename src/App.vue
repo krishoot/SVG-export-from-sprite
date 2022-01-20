@@ -24,7 +24,7 @@
     <div v-if="isExportSuccess" class="export-icons__result">
       <ul class="export-icons__list export-icons-table">
         <li v-for="icon in allIcons" class="export-icons-table__row">
-          <div class="export-icons-table__cell">
+          <div class="export-icons-table__cell export-icons-table__cell--icon">
             <span v-html="icon.icon" class="export-icons-list__icon"></span>
           </div>
           <div class="export-icons-table__cell">
@@ -45,14 +45,11 @@
       </ul>
     </div>
 
-    <div class="export-icons__version">ver. 1.0</div>
+    <div class="export-icons__version">ver. 1.15</div>
   </div>
 </template>
 
 <script>
-// TODO: Удалять старые иконки при загрузке нового спрайта
-// TODO: svg должна быть вообще любой, даже с xmls в начале
-// TODO: версионирование
 export default {
   data: () => ({
     spriteItems: "",
@@ -62,6 +59,7 @@ export default {
   methods: {
     getIcons() {
       this.isExportSuccess = false;
+      this.allIcons = [];
 
       if (this.spriteItems === "") {
         alert("Пожалуйста, вставьте код спрайта!");
@@ -84,7 +82,7 @@ export default {
           icon: icon,
           iconCode: icon,
           iconLink: URL.createObjectURL(blob),
-          iconName: "icon-" + index
+          iconName: "icon-" + index + '.svg'
         });
       });
 
@@ -157,8 +155,8 @@ export default {
 
     &__version {
       position: absolute;
-      right: 20px;
-      bottom: 20px;
+      right: 15px;
+      top: 15px;
       color: #b5b5b5;
     }
   }
@@ -254,6 +252,10 @@ export default {
 
       &:not(:last-child) {
         border-right: 1px solid #00375e;
+      }
+
+      &--icon {
+        background: url('assets/images/icon_bg.jpg') no-repeat center/cover;
       }
     }
   }
