@@ -52,8 +52,5 @@
     "dev-watch": "cross-env NODE_ENV=development && WATCH=true && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js",
     "dev-server": "cross-env DEV_SERVER=true && node ./config/webpack/dev.server.js",
     "prod": "cross-env NODE_ENV=production && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js"
-  },
-  "dependencies": {
-    "nth-check": "2.0.1"
   }
 }
