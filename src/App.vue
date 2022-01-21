@@ -1,5 +1,5 @@
 <template>
-  <div class="export-icons">
+  <div class="extension__inner export-icons">
     <div class="export-icons__workspace export-icons-workspace">
       <textarea
           v-model="spriteItems"
@@ -10,15 +10,25 @@
           rows="10"
           placeholder="Вставьте сюда код спрайта"
       ></textarea>
-      <button
-          @click.prevent="getIcons"
-          id="get-icons"
-          class="export-icons-workspace__button button button--theme-secondary"
-      >
+      <div class="export-icons__buttons">
+        <button
+            @click.prevent="getIcons"
+            id="get-icons"
+            class="export-icons-workspace__button button button--theme-secondary"
+        >
             <span class="button__container">
           <span class="button__label">Получить иконки</span>
         </span>
-      </button>
+        </button>
+        <button
+            @click.prevent="findSprites"
+            class="export-icons-workspace__button button button--theme-secondary"
+        >
+            <span class="button__container">
+          <span class="button__label">Найти спрайт на странице</span>
+        </span>
+        </button>
+      </div>
     </div>
 
     <div v-if="isExportSuccess" class="export-icons__result">
@@ -28,7 +38,11 @@
             <span v-html="icon.icon" class="export-icons-list__icon"></span>
           </div>
           <div class="export-icons-table__cell">
-            <span class="export-icons-list__code">{{ icon.iconCode }}</span>
+            <button @click.prevent="showIconCode(icon.iconCode)" class="export-icons-list__button button button--theme-secondary">
+              <span class="button__container">
+                <span class="button__label">Показать код иконки</span>
+              </span>
+            </button>
           </div>
           <div class="export-icons-table__cell">
             <a
@@ -54,7 +68,8 @@ export default {
   data: () => ({
     spriteItems: "",
     allIcons: [],
-    isExportSuccess: false
+    isExportSuccess: false,
+    spritesOnPage: []
   }),
   methods: {
     getIcons() {
@@ -87,6 +102,32 @@ export default {
       });
 
       this.isExportSuccess = true;
+    },
+    showIconCode(iconCode) {
+      let iconCodeToCopy = iconCode;
+      this.$swal({
+        input: 'textarea',
+        inputLabel: 'Message',
+        inputValue: iconCode,
+        showCancelButton: true,
+        confirmButtonText: 'Копировать',
+        cancelButtonText: 'Закрыть'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let iconCodeValue = this.$swal.getInput().value;
+          navigator.clipboard.writeText(iconCodeValue).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+          }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+          });
+
+          this.$swal('Скопировано в буфер обмена!', '', 'success')
+        }
+      });
+    },
+    findSprites() {
+      this.spritesOnPage = document.getElementsByTagName('use');
+      console.log(this.spritesOnPage);
     }
   }
 };
@@ -135,6 +176,10 @@ export default {
 
   a {
     text-decoration: none;
+  }
+
+  .extension {
+    min-width: 500px;
   }
 
   .export-icons {

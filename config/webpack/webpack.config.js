@@ -74,5 +74,6 @@ addLoader(require('./loaders/vue'));
 addLoader(require('./loaders/webWorker'));
 addLoader(require('./loaders/scss'));
 addLoader(require('./loaders/fonts'));
+addLoader(require('./loaders/styles'));
 
 module.exports = settings;
