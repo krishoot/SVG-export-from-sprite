@@ -259,4 +259,10 @@ export default {
       }
     }
   }
+
+  .export-icons-list {
+    &__code {
+      word-break: break-word;
+    }
+  }
 </style>
