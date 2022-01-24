@@ -1,0 +1,163 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+* {
+  box-sizing: border-box;
+}
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif;
+  position: relative;
+}
+html,
+body {
+  height: 100%;
+}
+button,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+  font: inherit;
+  letter-spacing: inherit;
+}
+button {
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.extension {
+  min-width: 500px;
+}
+.export-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 15px;
+}
+.export-icons__workspace {
+  width: 100%;
+}
+.export-icons__result {
+  margin-top: 50px;
+}
+.export-icons__version {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: #b5b5b5;
+}
+.export-icons-workspace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.export-icons-workspace__textarea {
+  resize: none;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #00375e;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+.export-icons-workspace__textarea:focus {
+  outline: none;
+  border-color: #0064ab;
+}
+.export-icons-workspace__buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.button {
+  max-width: 100%;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+.button--is-rounded {
+  border-radius: 40px;
+}
+.button--icon-only {
+  padding: 10px;
+}
+.button--icon-only .button__icon {
+  width: 50px;
+  height: 50px;
+}
+.button--icon-only .button__icon .icon__svg {
+  fill: #fff;
+}
+.button__container {
+  flex: auto 0 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+.button__label {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ffffff;
+}
+.button--theme-primary {
+  background-color: #276aa5;
+}
+.button--theme-primary:hover {
+  background-color: #1f5584;
+}
+.button--theme-secondary {
+  background-color: #25a248;
+}
+.button--theme-secondary:hover {
+  background-color: #229643;
+}
+.export-icons-table {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  grid-gap: 20px;
+}
+.export-icons-table__cell {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+.icon-single__icon {
+  display: block;
+  background: url(../img/1c35418208aa82d66219.jpg) no-repeat center/cover;
+}
+.icon-single__icon .icon__svg {
+  fill: #fff;
+}
+.icon-single__actions {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=main_a5e34d44786e74dd35f5.css.map*/

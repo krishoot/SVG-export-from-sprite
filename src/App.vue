@@ -10,56 +10,77 @@
           rows="10"
           placeholder="Вставьте сюда код спрайта"
       ></textarea>
-      <div class="export-icons__buttons">
+      <div class="export-icons-workspace__buttons">
         <button
             @click.prevent="getIcons"
             id="get-icons"
-            class="export-icons-workspace__button button button--theme-secondary"
+            class="export-icons-workspace__button button button--theme-secondary button--is-rounded"
         >
-            <span class="button__container">
-          <span class="button__label">Получить иконки</span>
-        </span>
+          <span class="button__container">
+            <span class="button__label">Получить иконки</span>
+          </span>
         </button>
         <button
             @click.prevent="findSprites"
-            class="export-icons-workspace__button button button--theme-secondary"
+            class="export-icons-workspace__button button button--theme-primary button--is-rounded"
         >
-            <span class="button__container">
-          <span class="button__label">Найти спрайт на странице</span>
-        </span>
+          <span class="button__container">
+            <span class="button__label">Найти спрайт на странице</span>
+          </span>
         </button>
       </div>
+    </div>
+
+    <div v-if="isSpriteFound" class="export-icons__founded">
+      <ol v-if="spritesOnPage.length !== 0" class="export-icons__sprites export-icons-sprites">
+        <li v-for="sprite in spritesOnPage" class="export-icons-sprites__item">
+          <a :href="sprite.url" target="_blank" class="export-icons-sprites__link">{{ sprite.url }}</a>
+        </li>
+      </ol>
+      <p v-else class="export-icons-sprites__empty">Упс! Спрайтов не найдено :(</p>
     </div>
 
     <div v-if="isExportSuccess" class="export-icons__result">
       <ul class="export-icons__list export-icons-table">
         <li v-for="icon in allIcons" class="export-icons-table__row">
-          <div class="export-icons-table__cell export-icons-table__cell--icon">
-            <span v-html="icon.icon" class="export-icons-list__icon"></span>
-          </div>
-          <div class="export-icons-table__cell">
-            <button @click.prevent="showIconCode(icon.iconCode)" class="export-icons-list__button button button--theme-secondary">
-              <span class="button__container">
-                <span class="button__label">Показать код иконки</span>
-              </span>
-            </button>
-          </div>
-          <div class="export-icons-table__cell">
-            <a
-                :download="icon.iconName"
-                :href="icon.iconLink"
-                class="export-icons-list__link button button--theme-primary"
-            >
-              <span class="button__container">
-                <span class="button__label">Скачать иконку</span>
-              </span>
-            </a>
+          <div class="export-icons-list__icon icon-single">
+            <span v-html="icon.icon" class="icon-single__icon"></span>
+            <div class="icon-single__actions">
+              <button @click.prevent="showIconCode(icon.iconCode)"
+                      class="icon-single__action button button--theme-secondary button--icon-only"
+                      aria-label="Скопировать в буфер обмена"
+                      title="Скопировать в буфер обмена"
+              >
+                <span class="button__container">
+                  <span class="button__icon icon">
+                    <svg class="icon__svg">
+                      <use href="./assets/images/icons.svg#icon-copy"></use>
+                    </svg>
+                  </span>
+                </span>
+              </button>
+              <a
+                  :download="icon.iconName"
+                  :href="icon.iconLink"
+                  class="icon-single__action button button--theme-primary button--icon-only"
+                  aria-label="Скачать иконку"
+                  title="Скачать иконку"
+              >
+                <span class="button__container">
+                  <span class="button__icon icon">
+                    <svg class="icon__svg">
+                      <use href="./assets/images/icons.svg#icon-download"></use>
+                    </svg>
+                  </span>
+                </span>
+              </a>
+            </div>
           </div>
         </li>
       </ul>
     </div>
 
-    <div class="export-icons__version">ver. 1.15</div>
+    <div class="export-icons__version">ver. 1.1.5</div>
   </div>
 </template>
 
@@ -69,7 +90,8 @@ export default {
     spriteItems: "",
     allIcons: [],
     isExportSuccess: false,
-    spritesOnPage: []
+    spritesOnPage: [],
+    isSpriteFound: false
   }),
   methods: {
     getIcons() {
@@ -77,7 +99,13 @@ export default {
       this.allIcons = [];
 
       if (this.spriteItems === "") {
-        alert("Пожалуйста, вставьте код спрайта!");
+        this.$swal({
+          icon: 'error',
+          title: 'Упс!',
+          text: 'Пожалуйста, вставьте код спрайта!'
+        });
+
+        return;
       }
 
       let re = /symbol/gi;
@@ -115,9 +143,9 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           let iconCodeValue = this.$swal.getInput().value;
-          navigator.clipboard.writeText(iconCodeValue).then(function() {
+          navigator.clipboard.writeText(iconCodeValue).then(function () {
             console.log('Async: Copying to clipboard was successful!');
-          }, function(err) {
+          }, function (err) {
             console.error('Async: Could not copy text: ', err);
           });
 
@@ -126,188 +154,230 @@ export default {
       });
     },
     findSprites() {
-      this.spritesOnPage = document.getElementsByTagName('use');
-      console.log(this.spritesOnPage);
+      this.isSpriteFound = false;
+
+      let spritesOnPage = localStorage.getItem('total_elements');
+      this.spritesOnPage = JSON.parse(spritesOnPage);
+
+      this.isSpriteFound = true;
     }
   }
 };
 </script>
 
 <style lang="scss">
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  svg {
+svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: Roboto, Arial, sans-serif;
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+button,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.extension {
+  min-width: 500px;
+}
+
+.export-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 15px 15px;
+
+  &__workspace {
     width: 100%;
-    height: 100%;
-    display: block;
-    fill: currentColor;
   }
 
-  body {
-    margin: 0;
-    font-size: 16px;
-    font-family: Roboto, Arial, sans-serif;
-    position: relative;
+  &__result {
+    margin-top: 50px;
   }
 
-  html,
-  body {
-    height: 100%;
+  &__version {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #b5b5b5;
   }
+}
 
-  button,
-  textarea {
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
-    color: inherit;
-    box-shadow: none;
-    font: inherit;
-    letter-spacing: inherit;
-  }
+.export-icons-workspace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  button {
-    cursor: pointer;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .extension {
-    min-width: 500px;
-  }
-
-  .export-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 50px;
-
-    &__workspace {
-      max-width: 50%;
-      width: 100%;
-    }
-
-    &__result {
-      margin-top: 50px;
-    }
-
-    &__version {
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      color: #b5b5b5;
-    }
-  }
-
-  .export-icons-workspace {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__textarea {
-      resize: none;
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #00375e;
-      border-radius: 4px;
-      transition: border-color 0.2s ease-in-out;
-
-      &:focus {
-        outline: none;
-        border-color: lighten(#00375e, 15%);
-      }
-    }
-
-    &__button {
-      margin-top: 25px;
-    }
-  }
-
-  .button {
-    max-width: 100%;
-    min-height: 40px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 30px;
-    border-radius: 40px;
-    text-align: center;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
-
-    &__container {
-      flex: auto 0 1;
-      min-width: 0;
-      white-space: nowrap;
-    }
-
-    &__label {
-      display: block;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: #ffffff;
-    }
-
-    &--theme-primary {
-      background-color: #276aa5;
-
-      &:hover {
-        background-color: #1f5584;
-      }
-    }
-
-    &--theme-secondary {
-      background-color: #25a248;
-
-      &:hover {
-        background-color: #229643;
-      }
-    }
-  }
-
-  .export-icons-table {
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+  &__textarea {
+    resize: none;
+    width: 100%;
+    padding: 15px;
     border: 1px solid #00375e;
     border-radius: 4px;
+    transition: border-color 0.2s ease-in-out;
 
-    &__row {
-      display: grid;
-      grid-template-columns: 150px 1fr auto;
-
-      &:not(:last-child) {
-        border-bottom: 1px solid #00375e;
-      }
+    &:focus {
+      outline: none;
+      border-color: lighten(#00375e, 15%);
     }
+  }
 
-    &__cell {
-      display: flex;
-      align-items: center;
-      padding: 15px;
+  &__buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
 
-      &:not(:last-child) {
-        border-right: 1px solid #00375e;
-      }
+.button {
+  max-width: 100%;
+  min-height: 40px;
 
-      &--icon {
-        background: url('assets/images/icon_bg.jpg') no-repeat center/cover;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
+
+  &--is-rounded {
+    border-radius: 40px;
+  }
+
+  &--icon-only {
+    padding: 10px;
+
+    .button__icon {
+      width: 50px;
+      height: 50px;
+
+      .icon__svg {
+        fill: #fff;
       }
     }
   }
 
-  .export-icons-list {
-    &__code {
-      word-break: break-word;
+  &__container {
+    flex: auto 0 1;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  &__label {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+  }
+
+  &--theme-primary {
+    background-color: #276aa5;
+
+    &:hover {
+      background-color: #1f5584;
     }
   }
+
+  &--theme-secondary {
+    background-color: #25a248;
+
+    &:hover {
+      background-color: #229643;
+    }
+  }
+}
+
+.export-icons-table {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  grid-gap: 20px;
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+}
+
+.icon-single {
+  &__icon {
+    display: block;
+    background: url('assets/images/icon_bg.jpg') no-repeat center/cover;
+    width: 150px;
+    height: 150px;
+    padding: 15px;
+
+    .icon__svg {
+      fill: #fff;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__action {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.export-icons-sprites {
+  &__item {
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  &__link {
+    color: #1f5584;
+    text-decoration: underline;
+  }
+}
 </style>

@@ -11715,9 +11715,9 @@ module.exports = function (item) {
 
 /***/ }),
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss":
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-2.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-2.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -12095,303 +12095,6 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
-/***/ "./node_modules/swc-loader/src/index.js!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/swc-loader/src/index.js!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-    data: function() {
-        return {
-            spriteItems: "",
-            allIcons: [],
-            isExportSuccess: false,
-            spritesOnPage: []
-        };
-    },
-    methods: {
-        getIcons: function getIcons() {
-            var _this = this;
-            this.isExportSuccess = false;
-            this.allIcons = [];
-            if (this.spriteItems === "") {
-                alert("Пожалуйста, вставьте код спрайта!");
-            }
-            var re = /symbol/gi;
-            var lines = this.spriteItems.split("<svg");
-            lines = lines[1].split("</svg>");
-            lines = lines[0].split("<symbol");
-            lines.splice(0, 1);
-            var values = [].map.call(lines, function(obj) {
-                return '<svg xmlns="http://www.w3.org/2000/svg"' + obj.replace(re, "svg");
-            });
-            values.forEach(function(icon, index) {
-                var blob = new Blob([
-                    icon
-                ], {
-                    type: "image/svg+xml"
-                });
-                _this.allIcons.push({
-                    icon: icon,
-                    iconCode: icon,
-                    iconLink: URL.createObjectURL(blob),
-                    iconName: "icon-" + index + '.svg'
-                });
-            });
-            this.isExportSuccess = true;
-        },
-        showIconCode: function showIconCode(iconCode) {
-            var _this = this;
-            var iconCodeToCopy = iconCode;
-            this.$swal({
-                input: 'textarea',
-                inputLabel: 'Message',
-                inputValue: iconCode,
-                showCancelButton: true,
-                confirmButtonText: 'Копировать',
-                cancelButtonText: 'Закрыть'
-            }).then(function(result) {
-                if (result.isConfirmed) {
-                    var iconCodeValue = _this.$swal.getInput().value;
-                    navigator.clipboard.writeText(iconCodeValue).then(function() {
-                        console.log('Async: Copying to clipboard was successful!');
-                    }, function(err) {
-                        console.error('Async: Could not copy text: ', err);
-                    });
-                    _this.$swal('Скопировано в буфер обмена!', '', 'success');
-                }
-            });
-        },
-        findSprites: function findSprites() {
-            this.spritesOnPage = document.getElementsByTagName('use');
-            console.log(this.spritesOnPage);
-        }
-    }
-});
-
-
-/***/ }),
-
-/***/ "./node_modules/swc-loader/src/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/swc-loader/src/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm-bundler.js");
-
-function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for(var i = 0, arr2 = new Array(len); i < len; i++)arr2[i] = arr[i];
-    return arr2;
-}
-function _arrayWithoutHoles(arr) {
-    if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-function _iterableToArray(iter) {
-    if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _nonIterableSpread() {
-    throw new TypeError("Invalid attempt to spread non-iterable instance.\\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-var _hoisted_1 = {
-    class: "extension__inner export-icons"
-};
-var _hoisted_2 = {
-    class: "export-icons__workspace export-icons-workspace"
-};
-var _hoisted_3 = {
-    class: "export-icons__buttons"
-};
-var _hoisted_4 = /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    class: "button__container"
-}, [
-    /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-        class: "button__label"
-    }, "Получить иконки")
-], -1 /* HOISTED */ );
-var _hoisted_5 = [
-    _hoisted_4
-];
-var _hoisted_6 = /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    class: "button__container"
-}, [
-    /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-        class: "button__label"
-    }, "Найти спрайт на странице")
-], -1 /* HOISTED */ );
-var _hoisted_7 = [
-    _hoisted_6
-];
-var _hoisted_8 = {
-    key: 0,
-    class: "export-icons__result"
-};
-var _hoisted_9 = {
-    class: "export-icons__list export-icons-table"
-};
-var _hoisted_10 = {
-    class: "export-icons-table__row"
-};
-var _hoisted_11 = {
-    class: "export-icons-table__cell export-icons-table__cell--icon"
-};
-var _hoisted_12 = [
-    "innerHTML"
-];
-var _hoisted_13 = {
-    class: "export-icons-table__cell"
-};
-var _hoisted_14 = [
-    "onClick"
-];
-var _hoisted_15 = /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    class: "button__container"
-}, [
-    /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-        class: "button__label"
-    }, "Показать код иконки")
-], -1 /* HOISTED */ );
-var _hoisted_16 = [
-    _hoisted_15
-];
-var _hoisted_17 = {
-    class: "export-icons-table__cell"
-};
-var _hoisted_18 = [
-    "download",
-    "href"
-];
-var _hoisted_19 = /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-    class: "button__container"
-}, [
-    /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-        class: "button__label"
-    }, "Скачать иконку")
-], -1 /* HOISTED */ );
-var _hoisted_20 = [
-    _hoisted_19
-];
-var _hoisted_21 = /*#__PURE__*/ (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-    class: "export-icons__version"
-}, "ver. 1.15", -1 /* HOISTED */ );
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    var _$options, _$options1;
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [
-        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = function($event) {
-                    return _ctx.spriteItems = $event;
-                }),
-                name: "sprite",
-                id: "sprite",
-                class: "export-icons-workspace__textarea",
-                cols: "30",
-                rows: "10",
-                placeholder: "Вставьте сюда код спрайта"
-            }, null, 512 /* NEED_PATCH */ ), [
-                [
-                    vue__WEBPACK_IMPORTED_MODULE_0__.vModelText,
-                    _ctx.spriteItems
-                ]
-            ]),
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-                    onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function() {
-                        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
-                            args[_key] = arguments[_key];
-                        }
-                        return $options.getIcons && (_$options = $options).getIcons.apply(_$options, _toConsumableArray(args));
-                    }, [
-                        "prevent"
-                    ])),
-                    id: "get-icons",
-                    class: "export-icons-workspace__button button button--theme-secondary"
-                }, _hoisted_5),
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-                    onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function() {
-                        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++){
-                            args[_key] = arguments[_key];
-                        }
-                        return $options.findSprites && (_$options1 = $options).findSprites.apply(_$options1, _toConsumableArray(args));
-                    }, [
-                        "prevent"
-                    ])),
-                    class: "export-icons-workspace__button button button--theme-secondary"
-                }, _hoisted_7)
-            ])
-        ]),
-        _ctx.isExportSuccess ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, [
-            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_9, [
-                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.allIcons, function(icon) {
-                    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_10, [
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [
-                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-                                innerHTML: icon.icon,
-                                class: "export-icons-list__icon"
-                            }, null, 8 /* PROPS */ , _hoisted_12)
-                        ]),
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [
-                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-                                onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function($event) {
-                                    return $options.showIconCode(icon.iconCode);
-                                }, [
-                                    "prevent"
-                                ]),
-                                class: "export-icons-list__button button button--theme-secondary"
-                            }, _hoisted_16, 8 /* PROPS */ , _hoisted_14)
-                        ]),
-                        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [
-                            (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-                                download: icon.iconName,
-                                href: icon.iconLink,
-                                class: "export-icons-list__link button button--theme-primary"
-                            }, _hoisted_20, 8 /* PROPS */ , _hoisted_18)
-                        ])
-                    ]);
-                }), 256 /* UNKEYED_FRAGMENT */ ))
-            ])
-        ])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
-        _hoisted_21
-    ]);
-}
-
-
-/***/ }),
-
-/***/ "./src/assets/js/background.js":
-/*!*************************************!*\
-  !*** ./src/assets/js/background.js ***!
-  \*************************************/
-/***/ (() => {
-
-console.log('bg is done!');
-
-
-/***/ }),
-
 /***/ "./src/App.vue":
 /*!*********************!*\
   !*** ./src/App.vue ***!
@@ -12420,6 +12123,100 @@ if (false) {}
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: () => ({
+    spriteItems: "",
+    allIcons: [],
+    isExportSuccess: false,
+    spritesOnPage: [],
+    isSpriteFound: false
+  }),
+  methods: {
+    getIcons() {
+      this.isExportSuccess = false;
+      this.allIcons = [];
+
+      if (this.spriteItems === "") {
+        this.$swal({
+          icon: 'error',
+          title: 'Упс!',
+          text: 'Пожалуйста, вставьте код спрайта!'
+        });
+
+        return;
+      }
+
+      let re = /symbol/gi;
+
+      let lines = this.spriteItems.split("<svg");
+      lines = lines[1].split("</svg>");
+      lines = lines[0].split("<symbol");
+      lines.splice(0, 1);
+
+      let values = [].map.call(lines, function (obj) {
+        return '<svg xmlns="http://www.w3.org/2000/svg"' + obj.replace(re, "svg");
+      });
+
+      values.forEach((icon, index) => {
+        let blob = new Blob([icon], {type: "image/svg+xml"});
+        this.allIcons.push({
+          icon: icon,
+          iconCode: icon,
+          iconLink: URL.createObjectURL(blob),
+          iconName: "icon-" + index + '.svg'
+        });
+      });
+
+      this.isExportSuccess = true;
+    },
+    showIconCode(iconCode) {
+      let iconCodeToCopy = iconCode;
+      this.$swal({
+        input: 'textarea',
+        inputLabel: 'Message',
+        inputValue: iconCode,
+        showCancelButton: true,
+        confirmButtonText: 'Копировать',
+        cancelButtonText: 'Закрыть'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let iconCodeValue = this.$swal.getInput().value;
+          navigator.clipboard.writeText(iconCodeValue).then(function () {
+            console.log('Async: Copying to clipboard was successful!');
+          }, function (err) {
+            console.error('Async: Could not copy text: ', err);
+          });
+
+          this.$swal('Скопировано в буфер обмена!', '', 'success')
+        }
+      });
+    },
+    findSprites() {
+      this.isSpriteFound = false;
+
+      let spritesOnPage = localStorage.getItem('total_elements');
+      this.spritesOnPage = JSON.parse(spritesOnPage);
+
+      this.isSpriteFound = true;
+    }
+  }
+});
+
 
 /***/ }),
 
@@ -12453,7 +12250,7 @@ exports["default"] = (sfc, props) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_4_use_3_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_style_index_0_id_7ba5bd90_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/mini-css-extract-plugin/dist/loader.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/dist/stylePostLoader.js!../node_modules/resolve-url-loader/index.js!../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_resolve_url_loader_index_js_node_modules_sass_loader_dist_cjs_js_clonedRuleSet_2_use_3_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_style_index_0_id_7ba5bd90_lang_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/mini-css-extract-plugin/dist/loader.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/dist/stylePostLoader.js!../node_modules/resolve-url-loader/index.js!../node_modules/sass-loader/dist/cjs.js??clonedRuleSet-2.use[3]!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-2.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss");
 
 
 /***/ }),
@@ -12467,9 +12264,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_swc_loader_src_index_js_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_swc_loader_src_index_js_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/swc-loader/src/index.js!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=script&lang=js */ "./node_modules/swc-loader/src/index.js!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=script&lang=js */ "./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -12483,10 +12280,171 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_swc_loader_src_index_js_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_template_id_7ba5bd90__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_1_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_template_id_7ba5bd90__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_swc_loader_src_index_js_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_template_id_7ba5bd90__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/swc-loader/src/index.js!../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=template&id=7ba5bd90 */ "./node_modules/swc-loader/src/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90");
+/* harmony import */ var _node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_1_node_modules_thread_loader_dist_cjs_js_ruleSet_0_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_1_App_vue_vue_type_template_id_7ba5bd90__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!../node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!../node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./App.vue?vue&type=template&id=7ba5bd90 */ "./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90");
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[1]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=template&id=7ba5bd90 ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm-bundler.js");
+/* harmony import */ var _assets_images_icons_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/images/icons.svg */ "./src/assets/images/icons.svg");
+
+
+
+
+const _hoisted_1 = _assets_images_icons_svg__WEBPACK_IMPORTED_MODULE_1__ + '#icon-copy'
+const _hoisted_2 = _assets_images_icons_svg__WEBPACK_IMPORTED_MODULE_1__ + '#icon-download'
+const _hoisted_3 = { class: "extension__inner export-icons" }
+const _hoisted_4 = { class: "export-icons__workspace export-icons-workspace" }
+const _hoisted_5 = { class: "export-icons-workspace__buttons" }
+const _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+  /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__label" }, "Получить иконки")
+], -1 /* HOISTED */)
+const _hoisted_7 = [
+  _hoisted_6
+]
+const _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+  /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__label" }, "Найти спрайт на странице")
+], -1 /* HOISTED */)
+const _hoisted_9 = [
+  _hoisted_8
+]
+const _hoisted_10 = {
+  key: 0,
+  class: "export-icons__founded"
+}
+const _hoisted_11 = {
+  key: 0,
+  class: "export-icons__sprites export-icons-sprites"
+}
+const _hoisted_12 = { class: "export-icons-sprites__item" }
+const _hoisted_13 = ["href"]
+const _hoisted_14 = {
+  key: 1,
+  class: "export-icons-sprites__empty"
+}
+const _hoisted_15 = {
+  key: 1,
+  class: "export-icons__result"
+}
+const _hoisted_16 = { class: "export-icons__list export-icons-table" }
+const _hoisted_17 = { class: "export-icons-table__row" }
+const _hoisted_18 = { class: "export-icons-list__icon icon-single" }
+const _hoisted_19 = ["innerHTML"]
+const _hoisted_20 = { class: "icon-single__actions" }
+const _hoisted_21 = ["onClick"]
+const _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+  /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
+    /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
+      /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_1 })
+    ])
+  ])
+], -1 /* HOISTED */)
+const _hoisted_23 = [
+  _hoisted_22
+]
+const _hoisted_24 = ["download", "href"]
+const _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+  /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
+    /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
+      /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_2 })
+    ])
+  ])
+], -1 /* HOISTED */)
+const _hoisted_26 = [
+  _hoisted_25
+]
+const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.1.5", -1 /* HOISTED */)
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = $event => ((_ctx.spriteItems) = $event)),
+        name: "sprite",
+        id: "sprite",
+        class: "export-icons-workspace__textarea",
+        cols: "30",
+        rows: "10",
+        placeholder: "Вставьте сюда код спрайта"
+      }, null, 512 /* NEED_PATCH */), [
+        [vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.spriteItems]
+      ]),
+      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((...args) => ($options.getIcons && $options.getIcons(...args)), ["prevent"])),
+          id: "get-icons",
+          class: "export-icons-workspace__button button button--theme-secondary button--is-rounded"
+        }, _hoisted_7),
+        (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          onClick: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)((...args) => ($options.findSprites && $options.findSprites(...args)), ["prevent"])),
+          class: "export-icons-workspace__button button button--theme-primary button--is-rounded"
+        }, _hoisted_9)
+      ])
+    ]),
+    (_ctx.isSpriteFound)
+      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, [
+          (_ctx.spritesOnPage.length !== 0)
+            ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ol", _hoisted_11, [
+                ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.spritesOnPage, (sprite) => {
+                  return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_12, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                      href: sprite.url,
+                      target: "_blank",
+                      class: "export-icons-sprites__link"
+                    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(sprite.url), 9 /* TEXT, PROPS */, _hoisted_13)
+                  ]))
+                }), 256 /* UNKEYED_FRAGMENT */))
+              ]))
+            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_14, "Упс! Спрайтов не найдено :("))
+        ]))
+      : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
+    (_ctx.isExportSuccess)
+      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_16, [
+            ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.allIcons, (icon) => {
+              return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_17, [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+                    innerHTML: icon.icon,
+                    class: "icon-single__icon"
+                  }, null, 8 /* PROPS */, _hoisted_19),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+                      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.showIconCode(icon.iconCode)), ["prevent"]),
+                      class: "icon-single__action button button--theme-secondary button--icon-only",
+                      "aria-label": "Скопировать в буфер обмена",
+                      title: "Скопировать в буфер обмена"
+                    }, _hoisted_23, 8 /* PROPS */, _hoisted_21),
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                      download: icon.iconName,
+                      href: icon.iconLink,
+                      class: "icon-single__action button button--theme-primary button--icon-only",
+                      "aria-label": "Скачать иконку",
+                      title: "Скачать иконку"
+                    }, _hoisted_26, 8 /* PROPS */, _hoisted_24)
+                  ])
+                ])
+              ]))
+            }), 256 /* UNKEYED_FRAGMENT */))
+          ])
+        ]))
+      : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
+    _hoisted_27
+  ]))
+}
 
 /***/ }),
 
@@ -12681,6 +12639,17 @@ const compile = () => {
 
 
 
+/***/ }),
+
+/***/ "./src/assets/images/icons.svg":
+/*!*************************************!*\
+  !*** ./src/assets/images/icons.svg ***!
+  \*************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "img/d1c6f2b7bd98a047c47e.svg";
+
 /***/ })
 
 /******/ 	});
@@ -12762,6 +12731,26 @@ const compile = () => {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../";
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -12773,22 +12762,22 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm-bundler.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./src/App.vue");
-/* harmony import */ var _assets_js_background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/js/background */ "./src/assets/js/background.js");
-/* harmony import */ var _assets_js_background__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_js_background__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
 
 
 
-var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
-app.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()));
+
+
+const app  = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+app.use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2___default()));
+
 app.mount('#root');
-
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.0d1bc8fab97ebe0429b6.js.map
+//# sourceMappingURL=main.09c634688ad079524e5f.js.map

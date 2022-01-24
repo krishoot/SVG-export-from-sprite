@@ -1,8 +1,25 @@
+// chrome.browserAction.onClicked.addListener(function(tab) {
+//   // Отправить сообщение на активную вкладку
+//   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+//     var activeTab = tabs[0];
+//     chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
+//   });
+// });
+//
+// chrome.runtime.onMessage.addListener(
+//   function(request, sender, sendResponse) {
+//     if( request.message === "open_new_tab" ) {
+//       chrome.tabs.create({"url": request.url});
+//     }
+//   }
+// );
+
+// Example of a simple user data object
 let xx = document.getElementsByTagName('use'),
     docUrl = document.baseURI;
-if( docUrl.slice(-1) === '/' ) {
-    docUrl = docUrl.substring(0, docUrl.length - 1)
-}
+// if( docUrl.slice(-1) === '/' ) {
+//     docUrl = docUrl.substring(0, docUrl.length - 1)
+// }
 
 function contains(arr, elem) {
     return arr.find((i) => i === elem) !== -1;
@@ -16,23 +33,16 @@ Array.from(xx).forEach((item, index) => {
     let ww = qq[1].split('#');
     let spriteUrl = docUrl + ww[0];
     function checkAndAdd(spriteUrl) {
-        let id = spriteUrls.length + 1;
-        let found = spriteUrls.some(function (el) {
+        let spriteId = spriteUrls.length + 1;
+        let spriteInArray = spriteUrls.some(function (el) {
             return el.url === spriteUrl;
         });
-        if (!found) { spriteUrls.push({ id: id, url: spriteUrl }); }
+        if (!spriteInArray) { spriteUrls.push({ id: spriteId, url: spriteUrl }); }
     }
 
     checkAndAdd (spriteUrl);
 })
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-	if( request.message === "clicked_browser_action" ) {
-      var firstHref = document.getElementsByTagName('a')[0].getAttribute('href');
-
-      console.log(firstHref);
-
-      // Эта строка новая!
-      chrome.runtime.sendMessage({"message": "open_new_tab", "url": firstHref});
-    }
+chrome.runtime.sendMessage({
+    total_elements: spriteUrls // or whatever you want to send
 });
