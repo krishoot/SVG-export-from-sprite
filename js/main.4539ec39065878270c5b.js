@@ -12296,8 +12296,8 @@ const _hoisted_15 = [
   _hoisted_14
 ]
 const _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  download: "SVG-export-from-sprite-extension.zip",
-  href: "./extension/SVG-export-from-sprite-extension.zip",
+  download: "SVG-export-from-sprite-extension[1.2.5].zip",
+  href: "./extension/SVG-export-from-sprite-extension[1.2.5].zip",
   class: "export-icons__download-extension"
 }, " Скачать расширение для Chrome ", -1 /* HOISTED */)
 const _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.15", -1 /* HOISTED */)
