@@ -12150,6 +12150,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getIcons() {
       this.isExportSuccess = false;
+      this.isSpriteFound = false;
       this.allIcons = [];
 
       if (this.spriteItems === "") {
@@ -12209,6 +12210,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     findSprites() {
       this.isSpriteFound = false;
+      this.isExportSuccess = false;
 
       let spritesOnPage = localStorage.getItem('total_elements');
       this.spritesOnPage = JSON.parse(spritesOnPage);
@@ -12240,9 +12242,6 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
-        // response.text().then(function(codeMarkup) {
-        //   this.spriteUrlCode = codeMarkup;
-        // })
     }
   }
 });
@@ -12361,44 +12360,51 @@ const _hoisted_11 = {
 }
 const _hoisted_12 = { class: "export-icons-sprites__item" }
 const _hoisted_13 = ["onClick"]
-const _hoisted_14 = ["src", "name", "id"]
-const _hoisted_15 = ["href", "target"]
-const _hoisted_16 = {
+const _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+  /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__label" }, "Скопировать код спрайта")
+], -1 /* HOISTED */)
+const _hoisted_15 = [
+  _hoisted_14
+]
+const _hoisted_16 = { class: "export-icons-sprites__link export-icons-sprites-link" }
+const _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "export-icons-sprites-link__title" }, "Ссылка на спрайт:", -1 /* HOISTED */)
+const _hoisted_18 = ["href", "target"]
+const _hoisted_19 = {
   key: 1,
   class: "export-icons-sprites__empty"
 }
-const _hoisted_17 = {
+const _hoisted_20 = {
   key: 1,
   class: "export-icons__result"
 }
-const _hoisted_18 = { class: "export-icons__list export-icons-table" }
-const _hoisted_19 = { class: "export-icons-table__row" }
-const _hoisted_20 = { class: "export-icons-list__icon icon-single" }
-const _hoisted_21 = ["innerHTML"]
-const _hoisted_22 = { class: "icon-single__actions" }
-const _hoisted_23 = ["onClick"]
-const _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+const _hoisted_21 = { class: "export-icons__list export-icons-table" }
+const _hoisted_22 = { class: "export-icons-table__row" }
+const _hoisted_23 = { class: "export-icons-list__icon icon-single" }
+const _hoisted_24 = ["innerHTML"]
+const _hoisted_25 = { class: "icon-single__actions" }
+const _hoisted_26 = ["onClick"]
+const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
   /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
     /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
       /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_1 })
     ])
   ])
 ], -1 /* HOISTED */)
-const _hoisted_25 = [
-  _hoisted_24
+const _hoisted_28 = [
+  _hoisted_27
 ]
-const _hoisted_26 = ["download", "href"]
-const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+const _hoisted_29 = ["download", "href"]
+const _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
   /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
     /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
       /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_2 })
     ])
   ])
 ], -1 /* HOISTED */)
-const _hoisted_28 = [
-  _hoisted_27
+const _hoisted_31 = [
+  _hoisted_30
 ]
-const _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.1.5", -1 /* HOISTED */)
+const _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.2.5", -1 /* HOISTED */)
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [
@@ -12433,49 +12439,47 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.spritesOnPage, (sprite) => {
                   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_12, [
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-                      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.getSpriteCode(sprite.url)), ["prevent"])
-                    }, "Спрайт", 8 /* PROPS */, _hoisted_13),
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
-                      src: sprite.url,
-                      frameborder: "0",
-                      name: `frame-${sprite.id}`,
-                      id: `frame-${sprite.id}`
-                    }, null, 8 /* PROPS */, _hoisted_14),
-                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-                      href: sprite.url,
-                      target: `frame-${sprite.id}`,
-                      class: "export-icons-sprites__link"
-                    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(sprite.url), 9 /* TEXT, PROPS */, _hoisted_15)
+                      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.getSpriteCode(sprite.url)), ["prevent"]),
+                      class: "export-icons-sprites__button button button--theme-secondary button--size-s"
+                    }, _hoisted_15, 8 /* PROPS */, _hoisted_13),
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [
+                      _hoisted_17,
+                      (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                        href: sprite.url,
+                        target: `frame-${sprite.id}`,
+                        class: "export-icons-sprites-link__url"
+                      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(sprite.url), 9 /* TEXT, PROPS */, _hoisted_18)
+                    ])
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
               ]))
-            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_16, "Упс! Спрайтов не найдено :("))
+            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_19, "Упс! Спрайтов не найдено :("))
         ]))
       : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
     (_ctx.isExportSuccess)
-      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_18, [
+      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_21, [
             ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.allIcons, (icon) => {
-              return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_19, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [
+              return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_22, [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [
                   (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
                     innerHTML: icon.icon,
                     class: "icon-single__icon"
-                  }, null, 8 /* PROPS */, _hoisted_21),
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [
+                  }, null, 8 /* PROPS */, _hoisted_24),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
                       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.showIconCode(icon.iconCode)), ["prevent"]),
                       class: "icon-single__action button button--theme-secondary button--icon-only",
                       "aria-label": "Скопировать в буфер обмена",
                       title: "Скопировать в буфер обмена"
-                    }, _hoisted_25, 8 /* PROPS */, _hoisted_23),
+                    }, _hoisted_28, 8 /* PROPS */, _hoisted_26),
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
                       download: icon.iconName,
                       href: icon.iconLink,
                       class: "icon-single__action button button--theme-primary button--icon-only",
                       "aria-label": "Скачать иконку",
                       title: "Скачать иконку"
-                    }, _hoisted_28, 8 /* PROPS */, _hoisted_26)
+                    }, _hoisted_31, 8 /* PROPS */, _hoisted_29)
                   ])
                 ])
               ]))
@@ -12483,7 +12487,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ])
         ]))
       : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
-    _hoisted_29
+    _hoisted_32
   ]))
 }
 
@@ -12821,4 +12825,4 @@ app.mount('#root');
 
 /******/ })()
 ;
-//# sourceMappingURL=main.87288c21f3bc943b8e6e.js.map
+//# sourceMappingURL=main.25944004e21b1d2d4600.js.map

@@ -34,9 +34,15 @@
     <div v-if="isSpriteFound" class="export-icons__founded">
       <ol v-if="spritesOnPage.length !== 0" class="export-icons__sprites export-icons-sprites">
         <li v-for="sprite in spritesOnPage" class="export-icons-sprites__item">
-          <button @click.prevent="getSpriteCode(sprite.url)">Спрайт</button>
-          <iframe :src="sprite.url" frameborder="0" :name="`frame-${sprite.id}`" :id="`frame-${sprite.id}`"></iframe>
-          <a :href="sprite.url" :target="`frame-${sprite.id}`" class="export-icons-sprites__link">{{ sprite.url }}</a>
+          <button @click.prevent="getSpriteCode(sprite.url)" class="export-icons-sprites__button button button--theme-secondary button--size-s">
+            <span class="button__container">
+              <span class="button__label">Скопировать код спрайта</span>
+            </span>
+          </button>
+          <div class="export-icons-sprites__link export-icons-sprites-link">
+            <span class="export-icons-sprites-link__title">Ссылка на спрайт:</span>
+            <a :href="sprite.url" :target="`frame-${sprite.id}`" class="export-icons-sprites-link__url">{{ sprite.url }}</a>
+          </div>
         </li>
       </ol>
       <p v-else class="export-icons-sprites__empty">Упс! Спрайтов не найдено :(</p>
@@ -82,7 +88,7 @@
       </ul>
     </div>
 
-    <div class="export-icons__version">ver. 1.2.0</div>
+    <div class="export-icons__version">ver. 1.2.5</div>
   </div>
 </template>
 
@@ -99,6 +105,7 @@ export default {
   methods: {
     getIcons() {
       this.isExportSuccess = false;
+      this.isSpriteFound = false;
       this.allIcons = [];
 
       if (this.spriteItems === "") {
@@ -158,6 +165,7 @@ export default {
     },
     findSprites() {
       this.isSpriteFound = false;
+      this.isExportSuccess = false;
 
       let spritesOnPage = localStorage.getItem('total_elements');
       this.spritesOnPage = JSON.parse(spritesOnPage);
@@ -189,9 +197,6 @@ export default {
           }
         });
       });
-        // response.text().then(function(codeMarkup) {
-        //   this.spriteUrlCode = codeMarkup;
-        // })
     }
   }
 };
@@ -308,6 +313,11 @@ a {
   text-align: center;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border 0.2s ease-in-out;
 
+  &--size-s {
+    min-height: 30px;
+    padding: 5px 10px;
+  }
+
   &--is-rounded {
     border-radius: 40px;
   }
@@ -409,6 +419,14 @@ a {
 
   &__link {
     color: #1f5584;
+  }
+}
+
+.export-icons-sprites-link {
+  display: flex;
+  flex-direction: column;
+
+  &__url {
     text-decoration: underline;
   }
 }
