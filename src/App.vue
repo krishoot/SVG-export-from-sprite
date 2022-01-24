@@ -34,7 +34,9 @@
     <div v-if="isSpriteFound" class="export-icons__founded">
       <ol v-if="spritesOnPage.length !== 0" class="export-icons__sprites export-icons-sprites">
         <li v-for="sprite in spritesOnPage" class="export-icons-sprites__item">
-          <a :href="sprite.url" target="_blank" class="export-icons-sprites__link">{{ sprite.url }}</a>
+          <button @click.prevent="getSpriteCode(sprite.url)">Спрайт</button>
+          <iframe :src="sprite.url" frameborder="0" :name="`frame-${sprite.id}`" :id="`frame-${sprite.id}`"></iframe>
+          <a :href="sprite.url" :target="`frame-${sprite.id}`" class="export-icons-sprites__link">{{ sprite.url }}</a>
         </li>
       </ol>
       <p v-else class="export-icons-sprites__empty">Упс! Спрайтов не найдено :(</p>
@@ -80,7 +82,7 @@
       </ul>
     </div>
 
-    <div class="export-icons__version">ver. 1.1.5</div>
+    <div class="export-icons__version">ver. 1.2.0</div>
   </div>
 </template>
 
@@ -91,7 +93,8 @@ export default {
     allIcons: [],
     isExportSuccess: false,
     spritesOnPage: [],
-    isSpriteFound: false
+    isSpriteFound: false,
+    spriteUrlCode: ''
   }),
   methods: {
     getIcons() {
@@ -160,6 +163,35 @@ export default {
       this.spritesOnPage = JSON.parse(spritesOnPage);
 
       this.isSpriteFound = true;
+    },
+    getSpriteCode(spriteUrl) {
+      let mySwal = this.$swal;
+      fetch(spriteUrl).then((response) => {
+        return response.text();
+      }).then(function (data) {
+        mySwal({
+          input: 'textarea',
+          inputLabel: 'Message',
+          inputValue: data,
+          showCancelButton: true,
+          confirmButtonText: 'Копировать',
+          cancelButtonText: 'Закрыть'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let iconCodeValue = mySwal.getInput().value;
+            navigator.clipboard.writeText(iconCodeValue).then(function () {
+              console.log('Async: Copying to clipboard was successful!');
+            }, function (err) {
+              console.error('Async: Could not copy text: ', err);
+            });
+
+            mySwal('Скопировано в буфер обмена!', '', 'success')
+          }
+        });
+      });
+        // response.text().then(function(codeMarkup) {
+        //   this.spriteUrlCode = codeMarkup;
+        // })
     }
   }
 };

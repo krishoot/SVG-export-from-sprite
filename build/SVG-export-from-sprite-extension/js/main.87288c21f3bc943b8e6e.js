@@ -12144,7 +12144,8 @@ __webpack_require__.r(__webpack_exports__);
     allIcons: [],
     isExportSuccess: false,
     spritesOnPage: [],
-    isSpriteFound: false
+    isSpriteFound: false,
+    spriteUrlCode: ''
   }),
   methods: {
     getIcons() {
@@ -12213,6 +12214,35 @@ __webpack_require__.r(__webpack_exports__);
       this.spritesOnPage = JSON.parse(spritesOnPage);
 
       this.isSpriteFound = true;
+    },
+    getSpriteCode(spriteUrl) {
+      let mySwal = this.$swal;
+      fetch(spriteUrl).then((response) => {
+        return response.text();
+      }).then(function (data) {
+        mySwal({
+          input: 'textarea',
+          inputLabel: 'Message',
+          inputValue: data,
+          showCancelButton: true,
+          confirmButtonText: 'Копировать',
+          cancelButtonText: 'Закрыть'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            let iconCodeValue = mySwal.getInput().value;
+            navigator.clipboard.writeText(iconCodeValue).then(function () {
+              console.log('Async: Copying to clipboard was successful!');
+            }, function (err) {
+              console.error('Async: Could not copy text: ', err);
+            });
+
+            mySwal('Скопировано в буфер обмена!', '', 'success')
+          }
+        });
+      });
+        // response.text().then(function(codeMarkup) {
+        //   this.spriteUrlCode = codeMarkup;
+        // })
     }
   }
 });
@@ -12330,43 +12360,45 @@ const _hoisted_11 = {
   class: "export-icons__sprites export-icons-sprites"
 }
 const _hoisted_12 = { class: "export-icons-sprites__item" }
-const _hoisted_13 = ["href"]
-const _hoisted_14 = {
+const _hoisted_13 = ["onClick"]
+const _hoisted_14 = ["src", "name", "id"]
+const _hoisted_15 = ["href", "target"]
+const _hoisted_16 = {
   key: 1,
   class: "export-icons-sprites__empty"
 }
-const _hoisted_15 = {
+const _hoisted_17 = {
   key: 1,
   class: "export-icons__result"
 }
-const _hoisted_16 = { class: "export-icons__list export-icons-table" }
-const _hoisted_17 = { class: "export-icons-table__row" }
-const _hoisted_18 = { class: "export-icons-list__icon icon-single" }
-const _hoisted_19 = ["innerHTML"]
-const _hoisted_20 = { class: "icon-single__actions" }
-const _hoisted_21 = ["onClick"]
-const _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+const _hoisted_18 = { class: "export-icons__list export-icons-table" }
+const _hoisted_19 = { class: "export-icons-table__row" }
+const _hoisted_20 = { class: "export-icons-list__icon icon-single" }
+const _hoisted_21 = ["innerHTML"]
+const _hoisted_22 = { class: "icon-single__actions" }
+const _hoisted_23 = ["onClick"]
+const _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
   /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
     /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
       /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_1 })
     ])
   ])
 ], -1 /* HOISTED */)
-const _hoisted_23 = [
-  _hoisted_22
+const _hoisted_25 = [
+  _hoisted_24
 ]
-const _hoisted_24 = ["download", "href"]
-const _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
+const _hoisted_26 = ["download", "href"]
+const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__container" }, [
   /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", { class: "button__icon icon" }, [
     /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", { class: "icon__svg" }, [
       /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("use", { href: _hoisted_2 })
     ])
   ])
 ], -1 /* HOISTED */)
-const _hoisted_26 = [
-  _hoisted_25
+const _hoisted_28 = [
+  _hoisted_27
 ]
-const _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.1.5", -1 /* HOISTED */)
+const _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", { class: "export-icons__version" }, "ver. 1.1.5", -1 /* HOISTED */)
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [
@@ -12400,41 +12432,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ol", _hoisted_11, [
                 ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.spritesOnPage, (sprite) => {
                   return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_12, [
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+                      onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.getSpriteCode(sprite.url)), ["prevent"])
+                    }, "Спрайт", 8 /* PROPS */, _hoisted_13),
+                    (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+                      src: sprite.url,
+                      frameborder: "0",
+                      name: `frame-${sprite.id}`,
+                      id: `frame-${sprite.id}`
+                    }, null, 8 /* PROPS */, _hoisted_14),
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
                       href: sprite.url,
-                      target: "_blank",
+                      target: `frame-${sprite.id}`,
                       class: "export-icons-sprites__link"
-                    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(sprite.url), 9 /* TEXT, PROPS */, _hoisted_13)
+                    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(sprite.url), 9 /* TEXT, PROPS */, _hoisted_15)
                   ]))
                 }), 256 /* UNKEYED_FRAGMENT */))
               ]))
-            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_14, "Упс! Спрайтов не найдено :("))
+            : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", _hoisted_16, "Упс! Спрайтов не найдено :("))
         ]))
       : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
     (_ctx.isExportSuccess)
-      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [
-          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_16, [
+      ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, [
+          (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_18, [
             ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.allIcons, (icon) => {
-              return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_17, [
-                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [
+              return ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", _hoisted_19, [
+                (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [
                   (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
                     innerHTML: icon.icon,
                     class: "icon-single__icon"
-                  }, null, 8 /* PROPS */, _hoisted_19),
-                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [
+                  }, null, 8 /* PROPS */, _hoisted_21),
+                  (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
                       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($event => ($options.showIconCode(icon.iconCode)), ["prevent"]),
                       class: "icon-single__action button button--theme-secondary button--icon-only",
                       "aria-label": "Скопировать в буфер обмена",
                       title: "Скопировать в буфер обмена"
-                    }, _hoisted_23, 8 /* PROPS */, _hoisted_21),
+                    }, _hoisted_25, 8 /* PROPS */, _hoisted_23),
                     (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
                       download: icon.iconName,
                       href: icon.iconLink,
                       class: "icon-single__action button button--theme-primary button--icon-only",
                       "aria-label": "Скачать иконку",
                       title: "Скачать иконку"
-                    }, _hoisted_26, 8 /* PROPS */, _hoisted_24)
+                    }, _hoisted_28, 8 /* PROPS */, _hoisted_26)
                   ])
                 ])
               ]))
@@ -12442,7 +12483,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           ])
         ]))
       : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),
-    _hoisted_27
+    _hoisted_29
   ]))
 }
 
@@ -12780,4 +12821,4 @@ app.mount('#root');
 
 /******/ })()
 ;
-//# sourceMappingURL=main.09c634688ad079524e5f.js.map
+//# sourceMappingURL=main.87288c21f3bc943b8e6e.js.map
