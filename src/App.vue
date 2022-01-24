@@ -45,6 +45,12 @@
       </ul>
     </div>
 
+    <a download="SVG-export-from-sprite-extension.zip"
+       href="./extension/SVG-export-from-sprite-extension.zip"
+       class="export-icons__download-extension">
+      Скачать расширение для Chrome
+    </a>
+
     <div class="export-icons__version">ver. 1.15</div>
   </div>
 </template>
@@ -62,7 +68,13 @@ export default {
       this.allIcons = [];
 
       if (this.spriteItems === "") {
-        alert("Пожалуйста, вставьте код спрайта!");
+        this.$swal({
+          icon: 'error',
+          title: 'Упс!',
+          text: 'Пожалуйста, вставьте код спрайта!'
+        });
+
+        return;
       }
 
       let re = /symbol/gi;
@@ -158,6 +170,13 @@ export default {
       right: 15px;
       top: 15px;
       color: #b5b5b5;
+    }
+
+    &__download-extension {
+      color: #1f5584;
+      position: absolute;
+      left: 15px;
+      top: 15px;
     }
   }
 
