@@ -1,5 +1,5 @@
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-2.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-4.use[3]!./node_modules/thread-loader/dist/cjs.js??ruleSet[0].use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[1]!./src/App.vue?vue&type=style&index=0&id=7ba5bd90&lang=scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 * {
   box-sizing: border-box;
@@ -11,10 +11,10 @@ svg {
   fill: currentColor;
 }
 body {
-  margin: 0;
-  font-size: 16px;
-  font-family: Roboto, Arial, sans-serif;
   position: relative;
+  margin: 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 16px;
 }
 html,
 body {
@@ -36,17 +36,17 @@ button {
   cursor: pointer;
 }
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 .extension {
   min-width: 500px;
 }
 .export-icons {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 50px 15px 15px;
 }
 .export-icons__workspace {
@@ -57,9 +57,9 @@ a {
 }
 .export-icons__version {
   position: absolute;
-  right: 15px;
   top: 15px;
-  color: #b5b5b5;
+  right: 15px;
+  color: #B5B5B5;
 }
 .export-icons-workspace {
   display: flex;
@@ -67,10 +67,10 @@ a {
   align-items: center;
 }
 .export-icons-workspace__textarea {
-  resize: none;
   width: 100%;
   padding: 15px;
-  border: 1px solid #00375e;
+  resize: none;
+  border: 1px solid #00375E;
   border-radius: 4px;
   transition: border-color 0.2s ease-in-out;
 }
@@ -79,10 +79,10 @@ a {
   border-color: #0064ab;
 }
 .export-icons-workspace__buttons {
+  width: 100%;
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
 }
 .button {
   max-width: 100%;
@@ -109,7 +109,7 @@ a {
   height: 50px;
 }
 .button--icon-only .button__icon .icon__svg {
-  fill: #fff;
+  fill: #FFF;
 }
 .button__container {
   flex: auto 0 1;
@@ -119,28 +119,28 @@ a {
 .button__label {
   display: block;
   overflow: hidden;
+  color: #FFF;
   text-overflow: ellipsis;
-  color: #ffffff;
 }
 .button--theme-primary {
-  background-color: #276aa5;
+  background-color: #276AA5;
 }
 .button--theme-primary:hover {
-  background-color: #1f5584;
+  background-color: #1F5584;
 }
 .button--theme-secondary {
-  background-color: #25a248;
+  background-color: #25A248;
 }
 .button--theme-secondary:hover {
   background-color: #229643;
 }
 .export-icons-table {
-  padding: 0;
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  list-style: none;
   grid-gap: 20px;
+  padding: 0;
+  list-style: none;
 }
 .export-icons-table__cell {
   display: flex;
@@ -148,14 +148,14 @@ a {
   padding: 15px;
 }
 .icon-single__icon {
-  display: block;
-  background: url(../img/1c35418208aa82d66219.jpg) no-repeat center/cover;
   width: 150px;
   height: 150px;
+  display: block;
   padding: 15px;
+  background: url(../img/1c35418208aa82d66219.jpg) no-repeat center/cover;
 }
 .icon-single__icon .icon__svg {
-  fill: #fff;
+  fill: #FFF;
 }
 .icon-single__actions {
   display: flex;
@@ -167,14 +167,14 @@ a {
 }
 .icon {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 .export-icons-sprites__item + .export-icons-sprites__item {
   margin-top: 10px;
 }
 .export-icons-sprites__link {
-  color: #1f5584;
+  color: #1F5584;
 }
 .export-icons-sprites-link {
   display: flex;
@@ -184,4 +184,4 @@ a {
   text-decoration: underline;
 }
 
-/*# sourceMappingURL=main_9440727e8fcb7c5821df.css.map*/
+/*# sourceMappingURL=main_8e80706c6b4f72370e97.css.map*/

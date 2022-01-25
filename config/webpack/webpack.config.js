@@ -11,7 +11,9 @@ const
 let settings = {
     mode:  NODE_ENV,
     //esModule: true,
-    entry: `${paths.src}/index.ts`,
+    entry: {
+        app: `${paths.src}/index.ts`,
+    },
     output: {
         filename:   'js/[name].[contenthash].js',
         path: paths.build
@@ -57,6 +59,7 @@ addPlugin(require('./plugins/assets'));
 addPlugin(require('./plugins/cleanWebpack'));
 addPlugin(require('./plugins/webpackBar'));
 addPlugin(require('./plugins/HTMLWebpack'));
+addPlugin(require('./plugins/copyWebpack'));
 
 /**
  * #######################################
@@ -69,9 +72,8 @@ const addLoader = (loader) => {
 }
 
 addLoader(require('./loaders/images'));
-//addLoader(require('./loaders/swc'));
+addLoader(require('./loaders/swc'));
 addLoader(require('./loaders/vue'));
-//addLoader(require('./loaders/webWorker'));
 addLoader(require('./loaders/scss'));
 addLoader(require('./loaders/fonts'));
 addLoader(require('./loaders/styles'));

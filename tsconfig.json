@@ -29,7 +29,8 @@
       "@vue/reactivity/dist/reactivity",
       "@vue/runtime-core/dist/runtime-core",
       "@vue/runtime-dom/dist/runtime-dom",
-      "vue-sweetalert2"
+      "vue-sweetalert2",
+      "chrome"
     ]
   },
   "include": [

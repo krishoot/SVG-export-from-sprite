@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@swc/core": "^1.2.133",
+    "@types/chrome": "^0.0.177",
     "@types/crypto-js": "^4.1.0",
     "@types/folder-hash": "^4.0.1",
     "@types/luxon": "^2.0.7",
@@ -22,6 +23,7 @@
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.5.2",
+    "minify": "^8.0.3",
     "postcss": "8.4.5",
     "postcss-scss": "^4.0.3",
     "regenerator-runtime": "^0.13.9",
@@ -47,8 +49,6 @@
     "webpackbar": "^5.0.2"
   },
   "scripts": {
-    "start": "webpack serve -c config/webpack/dev.js",
-    "build": "webpack -c config/webpack/prod.js",
     "dev": "cross-env NODE_ENV=development && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js",
     "dev-watch": "cross-env NODE_ENV=development && WATCH=true && yarn webpack-cli --progress --config ./config/webpack/webpack.config.js",
     "dev-server": "cross-env DEV_SERVER=true && node ./config/webpack/dev.server.js",
