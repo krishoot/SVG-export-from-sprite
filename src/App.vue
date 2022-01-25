@@ -45,8 +45,8 @@
       </ul>
     </div>
 
-    <a download="SVG-export-from-sprite-extension.zip"
-       href="./extension/SVG-export-from-sprite-extension.zip"
+    <a download="SVG-export-from-sprite-extension[1.5.0].zip"
+       href="./extension/SVG-export-from-sprite-extension[1.5.0].zip"
        class="export-icons__download-extension">
       Скачать расширение для Chrome
     </a>
