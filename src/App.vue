@@ -107,6 +107,11 @@ export default {
     isSpriteFound: false,
     spriteUrlCode: ''
   }),
+  watch() {
+    chrome.action.onClicked.addListener(function () {
+      console.log('open');
+    })
+  },
   methods: {
     getIcons() {
       this.isExportSuccess = false;
@@ -169,13 +174,15 @@ export default {
       });
     },
     findSprites() {
-      sendMessageToContent({type: 1}, 'error', () => {}, (response) => {
-          this.isSpriteFound = false;
-          this.isExportSuccess = false;
+      sendMessageToContent({type: 1}, 'error', () => {
+      }, (response) => {
+        this.isSpriteFound = false;
+        this.isExportSuccess = false;
+        this.spritesOnPage = response.total_elements;
 
-          this.spritesOnPage = response.total_elements;
+        sessionStorage.setItem('spritesInStorage', JSON.stringify(this.spritesOnPage))
 
-          this.isSpriteFound = true;
+        this.isSpriteFound = true;
       })
     },
     getSpriteCode(spriteUrl) {
@@ -209,5 +216,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import 'assets/scss/main';
+@import 'assets/scss/main';
 </style>

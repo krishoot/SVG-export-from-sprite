@@ -22,9 +22,8 @@ let settings = {
     watchOptions: {
         aggregateTimeout: 1200,
     },
-    devtool: 'source-map',
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js', '.vue' ],
+        extensions: [ '.tsx', '.ts', '.js', '.vue', '...' ],
         fallback: {
             "events": false,
             "buffer": false,
@@ -33,9 +32,13 @@ let settings = {
             'path':   false,
         }
     },
+    devtool: false,
     optimization: {
-        minimize:     false,
+        minimize:     true,
         emitOnErrors: false,
+        runtimeChunk: {
+            name: (entrypoint) => `init~${entrypoint.name}`
+        },
     },
     plugins: [],
     module: {
