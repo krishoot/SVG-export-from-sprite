@@ -36,7 +36,7 @@
     "stylelint-selector-bem-pattern": "^2.1.1",
     "swc-loader": "^0.1.15",
     "thread-loader": "^3.0.4",
-    "vue": "^3.2.27",
+    "vue": "^3.2.31",
     "vue-loader": "^17.0.0",
     "vue-sweetalert2": "^5.0.2",
     "webpack": "^5.66.0",
